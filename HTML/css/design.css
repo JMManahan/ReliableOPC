@@ -1,0 +1,422 @@
+        /* Slider Styles */
+        .slider {
+            position: relative;
+        }
+        
+        .slider .item {
+            position: relative;
+        }
+        
+        .slider img.img-responsive {
+            width: 100%;  /* Make image responsive */
+            height: auto; /* Maintain aspect ratio */
+        }
+        
+        /* Carousel Title Styles */
+        .carousel-title {
+            color: rgb(12, 12, 12);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .carousel-title {
+                margin-top: 250px;
+                font-size: 18px;  /* Small font size for mobile */
+                line-height: 1.1;   /* Tighten line spacing */
+                word-wrap: break-word;  /* Break words to prevent overflow */
+            }
+        
+            p {
+                margin-top: 100px;
+                font-size: 1rem; /* Adjust size for mobile as well */
+            }
+        }
+        
+        /* General Styling for Product Images */
+        .product-image {
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+        }
+        
+        /* Hover Effect for Product Images */
+        .product-image:hover {
+            transform: scale(1.05); /* Slightly enlarge the image */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow for a pop-up effect */
+            filter: brightness(1.1); /* Brighten the image slightly */
+        }
+        
+        
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 9999; /* Sit on top */
+            padding-top: 50px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        }
+        
+        /* Modal Content (image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%; /* Reduce size from full screen */
+            max-width: 700px; /* Max width */
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Add Animation */
+        .modal-content {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        
+        @keyframes zoom {
+            from {
+                transform: scale(0.4);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        /* Close Button (X) */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        /* Contact Us Button Styles */
+        /* Message Icon Button Styles */
+        /* Contact Us Button Styles */
+ /* Common styles for both Contact Us and Location buttons */
+/* Common styles for both Contact Us and Location buttons */
+.js-contact-us, .js-location {
+    display: inline-block;
+    position: fixed;
+    right: 15px;
+    background: #17bed2; /* Background color */
+    color: #fff; /* Text/Icon color */
+    font-size: 32px; /* Increase font size for the icon */
+    width: 45px; /* Adjust width to shape like an envelope */
+    height: 45px; /* Adjust height to shape like an envelope */
+    padding: 0; /* Remove extra padding */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center icon horizontally */
+    text-decoration: none;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for opacity and transform */
+    z-index: 9999; /* Ensure it's above other elements */
+    transform: translateY(0); /* Default position */
+}
+
+.js-contact-us.hidden, .js-location.hidden {
+    opacity: 0; /* Fade out */
+    transform: translateY(20px); /* Slide down effect */
+    pointer-events: none; /* Disable pointer events when hidden */
+}
+
+/* Hover Effect for both buttons */
+.js-contact-us:hover, .js-location:hover {
+    background: #1397a6; /* Change background on hover */
+    text-decoration: none;
+}
+
+/* Icon Specific Styles */
+.js-contact-us i, .js-location i {
+    margin: 0; /* Remove any default margin */
+    color: #fff; /* Ensure icon color is white */
+    font-size: 25px; /* Larger icon size */
+    line-height: 40px; /* Center icon vertically */
+    vertical-align: middle; /* Align icon vertically */
+}
+
+/* Side Panel Styles */
+.side-panel {
+    width: 0; /* Hidden by default */
+    height: 110%; /* Adjust the height value as needed (e.g., 60% of the viewport) */
+    position: fixed;
+    top: 13%; /* Center the panel vertically (adjust if necessary) */
+    right: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 10000; /* Above all other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Optional: add shadow for visual effect */
+}
+
+/* Side Panel Content */
+.side-panel-content {
+    max-height: 110vh; /* Limit the height of the panel */
+    padding: 20px;
+    color: #fff;
+    height: 110%; /* Ensure content fills the panel height */
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#panelContent {
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.side-panel h3 {
+    color: #444857; /* Change the heading color */
+    font-size: 27px;
+    font-weight:600;
+    margin-bottom: 0;
+}
+
+.side-panel h2 {
+    color: #17bed2; /* Change the heading color */
+    font-size: 27px;
+    font-weight:600;
+    margin-top: 0;
+}
+
+.side-panel p {
+    color: #444857; /* Change paragraph text color */
+    margin-top: 20px;
+}
+
+.side-panel p1 {
+    color: #17bed2; /* Change paragraph text color */
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.side-panel iframe {
+    border: 2px solid #17bed2; /* Change iframe border color */
+    border-radius: 5px; /* Optional: add border radius */
+}
+
+/* Toggle Button Styles */
+.js-toggle-buttons {
+    display: inline-block;
+    position: fixed;
+    right: 15px;
+    bottom: 80px; /* Positioned below the contact-us and location buttons */
+    background: #17bed2; /* Background color */
+    color: #fff; /* Text/Icon color */
+    font-size: 32px; /* Increase font size for the icon */
+    width: 45px; /* Adjust width */
+    height: 45px; /* Adjust height */
+    padding: 0; /* Remove extra padding */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center icon horizontally */
+    text-decoration: none;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s ease; /* Smooth transition for all properties */
+    z-index: 9999; /* Ensure it's above other elements */
+}
+
+.js-toggle-buttons:hover {
+    background: #1397a6; /* Change background on hover */
+    text-decoration: none;
+}
+
+/* Icon Specific Styles for Toggle Button */
+.js-toggle-buttons i {
+    margin: 0; /* Remove any default margin */
+    color: #fff; /* Ensure icon color is white */
+    font-size: 25px; /* Larger icon size */
+    line-height: 40px; /* Center icon vertically */
+    vertical-align: middle; /* Align icon vertically */
+}
+
+/* Adjust positions for Contact Us and Location Buttons */
+.js-contact-us {
+    bottom: 180px; /* Position adjusted to leave space for toggle button */
+}
+
+.js-location {
+    bottom: 130px; /* Position adjusted to leave space for toggle button */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* Style the submit button */
+button[type="submit"] {
+    background-color: #17bed2; /* Match the other buttons */
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+button[type="submit"]:hover {
+    background-color: #1397a6; /* Darker shade on hover */
+}
+
+.side-panel form {
+    color: black;
+}
+
+.open-form-btn {
+    background-color: #b9f8ff61; /* Background color */
+    color: #1e1e1e; /* Text color */
+    font-weight: bolder;
+    border: none; /* No border */
+    padding: 20px 100px; /* Padding for button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: block; /* Make the button a block element */
+    margin: 0 auto; /* Center align the button horizontally */
+    font-size: 18px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    position: absolute; /* Positioning to allow for center right alignment */
+    left: 20px; /* Distance from the right */
+    top: 35%; /* Align to the vertical center */
+    transform: translateY(-50%); /* Adjust for exact vertical centering */
+}
+
+.open-form-btn:hover {
+    background-color: #b9f8ffb9; /* Darker shade on hover */
+}
+
+.icon {
+    font-size: 60px; /* Adjust size as needed */
+    margin-left: 50px; /* Space between text and icon */
+    vertical-align: middle; /* Center align with the text */
+    color: #1397a6;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+}
+
+.icon2 {
+    font-size: 20px;
+    margin-right: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    color: #1397a6;
+}
+
+
+
+
+/* Back Button Styles */
+.back-btn {
+    color: #1ac0d3; /* Text color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    display: inline; /* Limit clickable area to text only */
+    margin: -60px 0 0 -15px; /* Adjust margins: top, right, bottom, left */
+    font-weight: 200; /* Font weight */
+    text-decoration: none; /* Remove underline from link */
+    font-size: larger;
+    position: absolute;
+    top: 100px;
+}
+.back-btn:hover{
+    color: #09737f;
+}
+
+.form {
+    position: absolute;
+    top: 200px;
+    left: 35px;
+}
+
+.form-title-p{
+    position: absolute;
+    top: 150px;
+    left: 35px;
+}
+
+/* Form Input Styles */
+.form-input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding */
+    margin: 5px 0; /* Margin */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+/* Submit Button Styles */
+.submit-btn {
+    background-color: #17bed2; /* Background color */
+    color: #fff; /* Text color */
+    border: none; /* No border */
+    padding: 5px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+}
+
+
+/* General Inquiry Form Heading Styles */
+.general-inquiry-heading {
+    font-size: 50px; /* Font size */
+    margin: 0; /* Remove default margins */
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    position: absolute; /* Use absolute positioning */
+    top: 100px; /* Adjust as needed for vertical positioning */
+    left: 12px; /* Adjust as needed for horizontal positioning */
+    color: #fff; /* Text color (adjust as needed) */
+}
+
+/* Form Input Styles */
+.form-input {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding */
+    margin: 5px 0; /* Margin */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Phone Input Styles */
+.phone-input {
+    width: calc(100% - 45px); /* Adjust width based on the prefix size */
+    border-radius: 0 4px 4px 0; /* Rounded corners for right side */
+    border-left: none; /* Remove left border */
+    padding: 10px; /* Padding */
+}
+
+/* Phone Prefix Styles */
+.phone-prefix {
+    padding: 10px; /* Padding */
+    background: #f2f2f2; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px 0 0 4px; /* Rounded corners for left side */
+    margin-right: -1px; /* Remove gap between prefix and input */
+}
