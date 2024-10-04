@@ -23,8 +23,17 @@
         <link rel="icon" href="favicon.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="css/design.css">
-
     </head>
+    <style>
+        /* Hover effect */
+.hover-button {
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.hover-button:hover {
+    transform: scale(1.1); /* Enlarge by 10% on hover */
+}
+    </style>
     <!-- END HEAD -->
 
     <!-- BODY -->
@@ -44,7 +53,7 @@
 
                         <!-- Logo -->
                         <div class="logo">
-                            <a class="logo-wrap" href="index.html   ">
+                            <a class="logo-wrap" href="index.html">
                                 <img class="logo-img logo-img-main" src="img/RBMB_LOGO1.png" alt="Asentus Logo">
                                 <img class="logo-img logo-img-active" src="img/RBMB_LOGO1.png" alt="Asentus Logo">
                             </a>
@@ -73,74 +82,94 @@
         <!--========== END HEADER ==========-->
 
         <!--========== SLIDER ==========-->
-            <!-- front page -->
-            <div class="slider">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="container">
+                <!-- Indicators -->
+                <!-- <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                </ol> -->
+            </div>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <img class="img-responsive" src="img/1920x1080/medblur.png" alt="Slider Image">
                     <div class="container">
                         <div class="carousel-centered">
-                            <div class="margin-b-100">
-                                <h1 class="carousel-title">Innovating Healthcare <h1 class="carousel-title" style="color: #1397a6;">through Modern/Reliable <br> Medical Equipment </h1></h1>
-                                <p style="color: black;">RBMB OPC is your trusted partner in delivering state-of-the-art <br> medical, surgical, and orthopedic equipment across the Philippines.</p>
+                            <div class="margin-b-40">
+                                <h1 class="carousel-title" style="color: #1397a6;"><span class="carousel-title" style="color: rgb(12, 12, 12);">Innovating Healthcare</span><br> through Modern/Reliable <br> Medical Equipment</h1>
+                                <!-- <p>Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim minim estudiat veniam siad venumus dolore</p> -->
                             </div>
-                            <!-- Optional Button -->
-                            <!-- <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Explore</a> -->
+                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase hover-button" style="background-color: #1397a6;">Explore</a>
                         </div>
                     </div>
                 </div>
+                <!-- <div class="item">
+                    <img class="img-responsive" src="img/1920x1080/02.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h2 class="carousel-title">Hi-Tech Design</h2>
+                                <p>Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim minim estudiat veniam siad venumus dolore</p>
+                            </div>
+                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Explore</a>
+                        </div>
+                    </div>
+                </div> -->
             </div>
+        </div>
 
  <!-- Latest Products -->
-<div class="content-lg container">
+ <div class="content-lg container">
     <div class="row margin-b-40">
         <div class="col-sm">
-            <center><h2>PRODUCT HIGHLIGHTS</h2></center>
+            <center><h2 class="highlight-title">PRODUCT HIGHLIGHTS</h2></center>
         </div>  
     </div>
-    <!--// end row -->
 
-    <div class="row">
-        <!-- Latest Products -->
-        <div class="col-sm-4 sm-margin-b-50">
+    <div class="product-slider">
+        <div class="product active">
             <div class="margin-b-20">
                 <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                    <img class="img-responsive product-image" src="img/970x647/5.png" alt="Latest Products Image" onclick="openFullscreen(this)">
+                    <img class="img-responsive product-image" src="img/970x647/5.png" alt="Loop-X" onclick="openFullscreen(this)">
                 </div>
             </div>
             <h4><a href="#">Loop-X: Mobile Robotic Imaging</a> <span class="text-uppercase margin-l-20" style="color: #1397a6;">Brainlab</span></h4>
             <p>Revolutionizing imaging with mobility and precision.</p>
             <a class="link" href="#">Read More</a>
         </div>
-        <!-- End Latest Products -->
-
-        <!-- Latest Products -->
-        <div class="col-sm-4 sm-margin-b-50">
+        
+        <div class="product">
             <div class="margin-b-20">
                 <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                    <img class="img-responsive product-image" src="img/970x647/6.png" alt="Latest Products Image" onclick="openFullscreen(this)">
+                    <img class="img-responsive product-image" src="img/970x647/6.png" alt="Kick EM" onclick="openFullscreen(this)">
                 </div>
             </div>
             <h4><a href="#">Kick EM: Electromagnetic Surgical Navigation</a> <span class="text-uppercase margin-l-20" style="color: #1397a6;">Brainlab</span></h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+            <p>Precise and efficient surgical navigation.</p>
             <a class="link" href="#">Read More</a>
         </div>
-        <!-- End Latest Products -->
-
-        <!-- Latest Products -->
-        <div class="col-sm-4 sm-margin-b-50">
+    
+        <div class="product">
             <div class="margin-b-20">
                 <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                    <img class="img-responsive product-image" src="img/970x647/7.png" alt="Latest Products Image" onclick="openFullscreen(this)">
+                    <img class="img-responsive product-image" src="img/970x647/7.png" alt="Intraoperative Neuromonitoring" onclick="openFullscreen(this)">
                 </div>
             </div>
             <h4><a href="#">Intraoperative Neuromonitoring</a> <span class="text-uppercase margin-l-20" style="color: #1397a6;">InoMed</span></h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+            <p>Reliable monitoring solutions for critical surgeries.</p>
             <a class="link" href="#">Read More</a>
         </div>
-        <!-- End Latest Products -->
     </div>
-    <!--// end row -->
+
+    <div class="dots-container">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
 </div>
+
 <!-- End Latest Products -->
 
 <!-- The Modal -->
@@ -163,6 +192,56 @@ function openFullscreen(img) {
         img.msRequestFullscreen();
     }
 }
+
+let currentIndex = 0;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.product');
+    const dots = document.querySelectorAll('.dot');
+
+    // Loop through all slides and hide them
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active'); // Remove active class from all slides
+        dots[i].classList.remove('active'); // Remove active class from all dots
+    });
+
+    // Show the current slide and mark its dot as active
+    slides[index].classList.add('active'); 
+    dots[index].classList.add('active'); 
+}
+
+function currentSlide(index) {
+    currentIndex = index; // Update current slide index
+    showSlide(currentIndex); // Show the corresponding slide
+}
+
+// Function to handle touch events for mobile swipe
+function handleTouch(startX, endX) {
+    if (startX > endX) {
+        // Swipe left, go to the next slide
+        currentIndex = (currentIndex + 1) % document.querySelectorAll('.product').length;
+    } else {
+        // Swipe right, go to the previous slide
+        currentIndex = (currentIndex - 1 + document.querySelectorAll('.product').length) % document.querySelectorAll('.product').length;
+    }
+    showSlide(currentIndex); // Show the updated slide
+}
+
+// Touch event listeners
+let touchStartX = 0;
+
+document.querySelector('.product-slider').addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX; // Get the starting X position
+});
+
+document.querySelector('.product-slider').addEventListener('touchmove', function(e) {
+    const touchEndX = e.touches[0].clientX; // Get the ending X position
+    handleTouch(touchStartX, touchEndX); // Handle the touch event
+});
+
+// Initial call to display the first slide
+showSlide(currentIndex);
+
 </script>
 
         <!-- Service -->
@@ -402,18 +481,17 @@ function openFullscreen(img) {
                 }
             </style>
 
-            <div class="content container">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <img class="footer-logo" src="img/RBMB_LOGO1.png" alt="Asentus Logo">
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <br><br>
-                        <p class="margin-b-0" style="color:#515769;"><a class="color-base fweight-700">©</a> 2024 Reliable Brand Medical Business OPC</p>
-                    </div>
-                </div>
-                <!--// end row -->
-            </div>
+<div class="content container">
+    <div class="row">
+        <div class="col-xs-6">
+            <img class="footer-logo" src="img/RBMB_LOGO1.png" alt="Asentus Logo">
+        </div>
+        <div class="footer-2024 col-xs-6 text-right">
+            <p class="margin-b-0"><a class="color-base fweight-700" href="http://keenthemes.com/preview/asentus/">@</a> 2024: <a class="color-base fweight-700" href="http://www.keenthemes.com/">Reliable Brand Medical Business OPC</a></p>
+        </div>
+    </div>
+    <!--// end row -->
+</div>
             <!-- End Copyright -->
         </footer>
 
@@ -488,9 +566,17 @@ const locationBtn = document.querySelector('.js-location');
 
 // Function to open side panel with specified content
 function openSidePanel(content) {
-    sidePanel.style.width = "500px";
+    // Check the window width to determine the appropriate panel width
+    if (window.innerWidth <= 767) {
+        sidePanel.style.width = "400px"; // Adjust width for mobile
+    } else {
+        sidePanel.style.width = "500px"; // Adjust width for larger screens
+    }
+    
+    // Set the content of the side panel
     panelContent.innerHTML = content;
 }
+
 
 // Show side panel with Contact Us details when Contact Us button is clicked
 contactUsBtn.addEventListener('click', function() {
@@ -514,7 +600,11 @@ contactUsBtn.addEventListener('click', function() {
 
 // Function to open the inquiry form panel
 function openInquiryFormPanel() {
-    sidePanel.style.width = "500px"; // Adjust width for form panel
+    if (window.innerWidth <= 767) {
+        sidePanel.style.width = "400px"; // Adjust width for mobile
+    } else {
+        sidePanel.style.width = "500px"; // Adjust width for larger screens
+    }
     panelContent.innerHTML = `
     <div class="side-panel-content">
         <a href="javascript:void(0);" class="back-btn"><span class="icon2">&lt;</span>Back</a>
@@ -682,7 +772,6 @@ const openInquiryFormBtn = document.querySelector('.open-form-btn');
 openInquiryFormBtn.addEventListener('click', function() {
     openInquiryFormPanel(); // Call your function to open the form panel
 });
-
 
             </script>
 
