@@ -16,22 +16,95 @@
         .carousel-title {
             color: rgb(12, 12, 12);
         }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .carousel-title {
-                margin-top: 250px;
-                font-size: 18px;  /* Small font size for mobile */
-                line-height: 1.1;   /* Tighten line spacing */
-                word-wrap: break-word;  /* Break words to prevent overflow */
-            }
-        
-            p {
-                margin-top: 100px;
-                font-size: 1rem; /* Adjust size for mobile as well */
-            }
+
+        .img-responsive {
+            width: 100%; /* Default width */
+            height: auto; /* Maintain aspect ratio */
         }
         
+        .product-slider {
+            display: flex;
+            gap: 20px;
+        }
+        
+/* Mobile-specific styling */
+@media (max-width: 768px) {
+    .primary-title {
+        font-size: 26px;
+        margin-top: 0px; /* Adjusts the spacing from the top */
+    }
+
+    .secondary-title {
+        font-size: 26px;
+        line-height: 1.1;
+        margin-top: 220px;
+        color: #1ecadd;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 1rem;
+        text-align:left;
+    }
+
+    .highlight-title{
+        text-align: left;
+        margin-left: 20px;
+    }
+
+    .product-slider {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 0; /* Remove gap to avoid partial slides showing */
+        padding: 10px 0;
+    }
+
+    .product-slider::-webkit-scrollbar {
+        display: none; /* Hide scrollbar */
+    }
+
+    .product {
+        flex: 0 0 100%; /* Each product takes up 100% of the viewport */
+        scroll-snap-align: center;
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .dots-container {
+        text-align: center; /* Center the dots */
+        margin-top: 20px; /* Spacing above the dots */
+    }
+    
+    .dot {
+        height: 10px; /* Size of the dot */
+        width: 10px; /* Size of the dot */
+        margin: 0 5px; /* Spacing between dots */
+        background-color: #bbb; /* Default dot color */
+        border-radius: 50%; /* Round shape */
+        display: inline-block; /* Display inline */
+        cursor: pointer; /* Change cursor to pointer */
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+    
+    /* Active dot style */
+    .dot.active {
+        background-color: #1397a6; /* Active dot color */
+    }
+
+    /* CSS for responsive image */
+    .footer-2024{
+        margin-top: 40px;
+    }
+    
+}
+
+@media (min-width: 769px) {
+    .dots-container {
+        display: none; /* Hide dots on larger screens */
+    }
+}
+
         /* General Styling for Product Images */
         .product-image {
             cursor: pointer; /* Change cursor to pointer on hover */
