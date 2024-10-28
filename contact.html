@@ -1,5 +1,15 @@
 <!DOCTYPE html>
-
+<!-- ==============================
+    Project:        Metronic "Asentus" Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
+    Version:        1.0
+    Author:         KeenThemes
+    Primary use:    Corporate, Business Themes.
+    Email:          support@keenthemes.com
+    Follow:         http://www.twitter.com/keenthemes
+    Like:           http://www.facebook.com/keenthemes
+    Website:        http://www.keenthemes.com
+    Premium:        Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+================================== -->
 <html lang="en" class="no-js">
     <!-- BEGIN HEAD -->
     <head>
@@ -32,6 +42,37 @@
         <link rel="icon" href="favicon.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="css/design.css">
+
+        <style>
+            .section-separator {
+                padding: 1em;
+            }
+        
+            .content-lg.container {
+                width: 100%;
+            }
+        
+            .contact-list {
+                font-size: 14px;
+            }
+        
+            /* Mobile adjustments */
+            @media (max-width: 767px) {
+                .col-sm-4, .col-sm-6 {
+                    margin: 0 auto;
+                    padding: 1em;
+                }
+        
+                .mapouter iframe {
+                    width: 100%;
+                    height: 250px;
+                }
+        
+                h3 {
+                    font-size: 1.5rem;
+                }
+            }
+        </style>
 
     </head>
     <!-- END HEAD -->
@@ -82,45 +123,62 @@
         <!--========== END HEADER ==========-->
 
         <!--========== PARALLAX ==========-->
-        <div class="parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/footer.png">
+        <div class="parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/contact_us.png">
             <div class="parallax-content container">
-                <h1 class="carousel-title" style="font-size: 60px; position:absolute; top: 30%;">Connect with our<br><h1 class="carousel-title" style="font-size: 60px; color: #18acbc; position:absolute; top: 40%;">Reliable Team</h1></h1>
+                <div class="carousel-centered">
+                <div class="margin-b-100">
+                <h1 class="about-title carousel-title"  style="color: #1397a6;"><span class="carousel-title" style="color: rgb(12, 12, 12);">Connect with our</span><br> RELIABLE Team</h1>
             </div>
+        </div>
+        </div>
         </div>
         <!--========== PARALLAX ==========-->
 
         <!--========== PAGE LAYOUT ==========-->
         <!-- Contact List -->
-        <div class="section-seperator">
+        <div class="section-separator">
             <div class="content-lg container">
                 <div class="row">
-
                     <!-- Contact List -->
-                    <div class="col-sm-4 sm-margin-b-50" style="margin-right: 200px; margin-left: 100px;">
+                    <div class="col-sm-4 sm-margin-b-50" style="margin-right: 5%; margin-left: 5%;">
                         <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
                             <h3><a href="#">Imus, Cavite</a> <span class="text-uppercase margin-l-20" style="color: #18acbc; font-weight: bolder;">Main Office</span></h3>
-                            <p>Unit 301, 3F Eljay’s Building,
-                                Aguinaldo Highway, Anabu I-E,
-                                4103 City of Imus, Cavite, Philippines
-                                </p>
+                            <p>Unit 301, 3F Eljay’s Building, Aguinaldo Highway, Anabu I-E, 4103 City of Imus, Cavite, Philippines</p>
                             <ul class="list-unstyled contact-list">
                                 <li><i class="margin-r-10 color-base icon-call-out"></i> +63-46-416-6352</li>
                                 <li><i class="margin-r-10 color-base icon-envelope"></i> Info.rbmbopc@gmail.com</li>
                             </ul>
                         </div>
                     </div>
-                    <!-- End Contact List -->
 
+                    <div class="col-sm-6" style="margin-top: -5%; padding: 1em;">
+                        <div class="mapouter">
+                            <div class="gmap_canvas">
+                                <iframe width="100%" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Unit%20301,%203F%20Eljay%E2%80%99s%20Building,%20Aguinaldo%20Highway,%20Anabu%20I-E,%204103%20City%20of%20Imus,%20Cavite,%20Philippines&t=&z=19&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Contact List -->
+                     <br>
+                     <br>
+        
                     <!-- Contact List -->
-                    <div class="col-sm-4 sm-margin-b-50">
+                    <div class="col-sm-4 sm-margin-b-50" style="margin-right: 5%; margin-left: 5%;">
                         <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
-                            <h3><a href="#">Parañaque City</a> <span class="text-uppercase margin-l-20" style="color: #18acbc; font-weight: bolder;">Sattelite Office</span></h3>
-                            <p>Units 12-14, Olivarez Condominium Bldg. 1, Juanita De Leon St., San Dionisio, 1700 Parañaque City, 
-                                Metro Manila, Philippines</p>
+                            <h3><a href="#">Parañaque City</a> <span class="text-uppercase margin-l-20" style="color: #18acbc; font-weight: bolder;">Satellite Office</span></h3>
+                            <p>Units 12-14, Olivarez Condominium Bldg. 1, Juanita De Leon St., San Dionisio, 1700 Parañaque City, Metro Manila, Philippines</p>
                             <ul class="list-unstyled contact-list">
                                 <li><i class="margin-r-10 color-base icon-call-out"></i> +63-32-8470-8450</li>
                                 <li><i class="margin-r-10 color-base icon-envelope"></i> Info.rbmbopc@gmail.com</li>
                             </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" style="margin-top: -1%; padding: 1em;">
+                        <div class="mapouter">
+                            <div class="gmap_canvas">
+                                <iframe width="100%" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Units%2012-14,%20Olivarez%20Condominium%20Bldg.%201,%20Juanita%20De%20Leon%20St.,%20San%20Dionisio,%201700%20Parañaque%20City,%20Metro%20Manila,%20Philippines&t=&z=19&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            </div>
                         </div>
                     </div>
                     <!-- End Contact List -->
@@ -129,16 +187,6 @@
             </div>
         </div>
         <!-- End Contact List -->
-
-        <!-- Google Map -->
-         <div class="row">
-         <div class="col-sm-3" style="margin-right: 260px; margin-left: 200px;">
-        <div class="mapouter"><div class="gmap_canvas"><iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Unit%20301,%203F%20Eljay%E2%80%99s%20Building,%20Aguinaldo%20Highway,%20Anabu%20I-E,%204103%20City%20of%20Imus,%20Cavite,%20Philippines&t=&z=19&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
-         </div>
-         <div class="col-sm">
-        <div class="mapouter"><div class="gmap_canvas"><iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Units%2012-14,%20Olivarez%20Condominium%20Bldg.%201,%20Juanita%20De%20Leon%20St.,%20San%20Dionisio,%201700%20Para%C3%B1aque%20City,%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Metro%20Manila,%20Philippines&t=&z=19&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
-    </div>
-</div>
         <!-- End Promo Section -->
         <!--========== END PAGE LAYOUT ==========-->
 
