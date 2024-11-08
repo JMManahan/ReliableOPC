@@ -182,7 +182,7 @@
                         </div>
                     </div>
                     <div class="custom-card">
-                        <a href="#" class="custom-card-link">
+                        <a href="products_neurosurgey.html" class="custom-card-link" target="_blank"> <!-- Opens in a new tab -->
                             <h3 class="custom-title" style="color:#18bed1; font-size: 1.8rem; font-weight:600;">
                                 Neurosurgery
                                 <i class="arrow-icon fa-solid fa-arrow-right"></i>
@@ -190,7 +190,7 @@
                         </a>
                     </div>
                 </div>
-            
+                
                 <!-- Spine Surgery Section -->
                 <div class="col-sm-3 sm-margin-b-50">
                     <div class="margin-b-20">
@@ -199,7 +199,7 @@
                         </div>
                     </div>
                     <div class="custom-card">
-                        <a href="#" class="custom-card-link">
+                        <a href="products_spine-surgery.html" class="custom-card-link" target="_blank"> <!-- Opens in a new tab -->
                             <h3 class="custom-title" style="color:#18bed1; font-size: 1.8rem; font-weight:600;">
                                 Spine Surgery
                                 <i class="arrow-icon fa-solid fa-arrow-right"></i>
@@ -207,7 +207,7 @@
                         </a>
                     </div>
                 </div>
-            
+                
                 <!-- ENT Surgery Section -->
                 <div class="col-sm-3 sm-margin-b-50">
                     <div class="margin-b-20">
@@ -216,7 +216,7 @@
                         </div>
                     </div>
                     <div class="custom-card">
-                        <a href="#" class="custom-card-link">
+                        <a href="ent-surgery.html" class="custom-card-link" target="_blank"> <!-- Opens in a new tab -->
                             <h3 class="custom-title" style="color:#18bed1; font-size: 1.8rem; font-weight:600;">
                                 ENT Surgery
                                 <i class="arrow-icon fa-solid fa-arrow-right"></i>
@@ -224,6 +224,7 @@
                         </a>
                     </div>
                 </div>
+                
             
                 <!-- Orthopedic Surgery Section -->
                 <div class="col-sm-3 sm-margin-b-50">
@@ -290,31 +291,7 @@
                         </div>
 
                         <center>
-                        <div>
-                            <ul class="list-unstyled footer-list">
-                                <li style="margin-right: 8%;">LEGAL DOCUMENTS
-                                    <hr class="custom-line">
-                                </li>
-                        <div class="col-sm-4 sm-margin-b-30">
-                            <!-- List -->
-                            <ul class="list-unstyled footer-list">
-                                <li class="footer-list-item"><a class="footer-list-link" href="COMPANY_PROFILE.pdf" target="_blank">Company Profile</a></li>
-                                <li class="footer-list-item"><a class="footer-list-link" href="SEC-RELIABLE-BRAND-MEDICAL-BUSINESS-RBMB-OPC.pdf" target="_blank">SEC Registration Certificate</a></li>
-                                <li class="footer-list-item"><a class="footer-list-link" href="RBMB OPC Mayors Pertmit CTC.pdf" target="_blank">Mayors Permit</a></li>
-                                <li class="footer-list-item"><a class="footer-list-link" href="LoA for RBMB OPC.pdf" target="_blank">Letter of Authorization (Brainlab)</a></li>
-                                <li class="footer-list-item"><a class="footer-list-link" href="ProcessMaker_FDA-LTO.pdf" target="_blank">FDA Permit</a></li>
-                                <li class="footer-list-item"><a class="footer-list-link" href="RBMP OPC Leased Contract.pdf" target="_blank">Lease Contract</a></li>                  
-                            </ul>
-                            <!-- End List -->
-                        </div>
-                        <div class="col-sm-3 sm-margin-b-30">
-                            <ul class="list-unstyled footer-list">
-                                <li class="footer-list-item"><a class="footer-list-link" href="BIR FORM 2303 - COR-RELIABLE-BRAND-MEDICAL-BUSINESS-RBMB-OPC.pdf" target="_blank">BIR Registration Certificate</a></li>
-                                <li class="footer-list-item"><a class="footer-list-link" href="SSS REGISTRATION CERTIFICATE.pdf" target="_blank">SSS Registration Certificate</a></li>
-                                <li class="footer-list-item"><a class="footer-list-link" href="PHILHEALTH REG. CERTIFICATE.pdf" target="_blank">PHILHEALTH Registration Certificate</a></li>
-                            </ul>
-                        </div>
-                    </div>
+
                 </center>
 
                         </div>
@@ -416,7 +393,14 @@ const locationBtn = document.querySelector('.js-location');
 
 // Function to open side panel with specified content
 function openSidePanel(content) {
-    sidePanel.style.width = "500px";
+    // Check the window width to determine the appropriate panel width
+    if (window.innerWidth <= 767) {
+        sidePanel.style.width = "400px"; // Adjust width for mobile
+    } else {
+        sidePanel.style.width = "500px"; // Adjust width for larger screens
+    }
+    
+    // Set the content of the side panel
     panelContent.innerHTML = content;
 }
 
@@ -442,7 +426,11 @@ contactUsBtn.addEventListener('click', function() {
 
 // Function to open the inquiry form panel
 function openInquiryFormPanel() {
-    sidePanel.style.width = "500px"; // Adjust width for form panel
+    if (window.innerWidth <= 767) {
+        sidePanel.style.width = "400px"; // Adjust width for mobile
+    } else {
+        sidePanel.style.width = "500px"; // Adjust width for larger screens
+    }
     panelContent.innerHTML = `
     <div class="side-panel-content">
         <a href="javascript:void(0);" class="back-btn"><span class="icon2">&lt;</span>Back</a>
