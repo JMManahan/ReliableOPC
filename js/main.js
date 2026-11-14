@@ -28,7 +28,7 @@ const hd=$('header.hd'),bg=$('.burger'),nv=$('nav.nv');
 bg.onclick=()=>{bg.classList.toggle('x');nv.classList.toggle('open')};
 const sc=()=>{const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;hd.classList.toggle('solid',y>40);$('#prog').style.width=(y/h*100)+'%';$('#top').classList.toggle('s',y>700)};
 addEventListener('scroll',sc,{passive:true});sc();$('#top').onclick=()=>scrollTo({top:0});
-const toast=(m,e)=>{const t=$('#toast');t.textContent=m;t.className='toast s'+(e?' err':'');setTimeout(()=>t.className='toast',3200)};
+const toast=(m,e)=>{const t=$('#toast');t.textContent=m;t.className='toast s'+(e?' err':'');setTimeout(()=>t.className='toast',3200)};window.RBtoast=toast;
 /* reveal + counters */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target);const c=e.target.querySelector('[data-count]');if(c)count(c)}),{threshold:.15});
 const rv=()=>$$('[data-r]:not(.in)').forEach((el,i)=>{el.style.setProperty('--d',(i%4)*.08+'s');io.observe(el)});
@@ -121,7 +121,7 @@ $('#forgot').onclick=async()=>{const m=$('#username').value.trim();if(!m){em.tex
 lf.onsubmit=async ev=>{ev.preventDefault();const b=$('button[type=submit]',lf);em.textContent='';lf.classList.remove('shake');b.disabled=true;b.textContent='Signing in…';
 try{await AUTH.signIn($('#username').value.trim(),pw.value,$('#remember').checked);location.href='portal.html'}
 catch(err){em.textContent=err.message||'Sign-in failed. Please try again.';void lf.offsetWidth;lf.classList.add('shake');b.disabled=false;b.textContent='Sign in'}}}
-if(pt){if(!AUTH.user)return location.replace('login.html');$('#who').textContent=AUTH.name;pt.hidden=false;$('#out').onclick=async()=>{await AUTH.signOut();location.href='login.html'}}};
+if(pt){if(!AUTH.user)return location.replace('login.html');$('#who').textContent=AUTH.user.displayName?'Welcome, '+AUTH.user.displayName:'Welcome back';pt.hidden=false;$('#out').onclick=async()=>{await AUTH.signOut();location.href='login.html'}}};
 window.AUTH?initAuth():addEventListener('rb-auth',initAuth);
 rv();
 })();

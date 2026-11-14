@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isAdmin()  { return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)); }
+
+    // An admin = a document in "admins" whose ID is that person's UID. Created by hand in the console only.
+    match /admins/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    match /leaveRequests/{id} {
+      allow read: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['uid','email','name','type','start','end','days','reason','status','createdAt'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.status == 'pending'
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 80
+        && request.resource.data.type is string && request.resource.data.type.size() <= 40
+        && request.resource.data.start is string && request.resource.data.start.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && request.resource.data.end is string && request.resource.data.end.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && request.resource.data.end >= request.resource.data.start
+        && request.resource.data.days is int && request.resource.data.days >= 1 && request.resource.data.days <= 366
+        && request.resource.data.reason is string && request.resource.data.reason.size() >= 5 && request.resource.data.reason.size() <= 500;
+
+      // only admins can approve / reject; nothing else on the request can change
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','adminNote','decidedBy','decidedAt'])
+        && request.resource.data.status in ['approved','rejected']
+        && request.resource.data.decidedBy == request.auth.token.email
+        && request.resource.data.decidedAt == request.time
+        && request.resource.data.adminNote is string && request.resource.data.adminNote.size() <= 300;
+
+      // employees may cancel their own request while it is still pending
+      allow delete: if signedIn() && resource.data.uid == request.auth.uid && resource.data.status == 'pending';
+    }
+  }
+}
