@@ -7,6 +7,6 @@ window.LEAVE_CONFIG={
   /* Email notifications via EmailJS (same account as the contact form). Leave a template id '' to switch that email off. */
   emailService:'service_35ipv2j',
   emailKey:'-ebaw7uEA31GkAoIr',
-  tplNew:'',       /* sent to admins when an employee submits a request */
+  tplNew:'template_j6htv95',       /* sent to admins when an employee submits a request */
   tplDecision:''   /* sent to the employee when an admin approves or rejects */
 };
