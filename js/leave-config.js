@@ -3,7 +3,7 @@ window.LEAVE_CONFIG={
   /* Yearly leave allowance in days, per type. Only types listed here show a balance; other types are not limited.
      !! These numbers are PLACEHOLDERS. Replace with your real policy. You can also override them without editing code:
         Firestore > settings > leave > allowance (for everyone), or balances > <employee UID> (for one person). */
-  allowance:{'Vacation Leave':10,'Sick Leave':10,'Emergency Leave':3},
+  allowance:{'Vacation Leave':5,'Sick Leave':5,'Emergency Leave':10},
   /* Email notifications via EmailJS (same account as the contact form). Leave a template id '' to switch that email off. */
   emailService:'service_nrbv6os',
   emailKey:'-h1xGgsYz_QT-iGFFj',
