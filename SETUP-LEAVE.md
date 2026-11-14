@@ -15,3 +15,49 @@ Leave requests are stored in Firebase's **Firestore** database. Do these steps o
 - The first time an employee submits, their full name is saved to their account and shown in the portal greeting.
 - To remove an admin, delete their document in the `admins` collection.
 - Not included yet (can be added): email notifications to admins, leave balances, a calendar view.
+
+
+---
+# Part 2: email notifications, leave balances, team calendar
+
+## A. Update your security rules (required)
+Firestore Database → Rules → select everything, paste the new contents of **firestore.rules**, Publish. (It adds read-only `settings` and `balances`, and the `calendar`.) If the editor shows a parse error, type the first line `rules_version = '2';` by hand and paste the rest.
+
+## B. Team calendar (no extra setup)
+Approving a request adds the person's **name and dates only** to a shared calendar that every signed-in employee can see (never the reason or type of leave); rejecting or changing the decision removes it. Requests you approved *before* this update are not on the calendar yet: open them in *Review requests → Change decision* and Approve again.
+
+## C. Leave balances
+- Allowances are set in **js/leave-config.js** (`allowance`). **The numbers there are placeholders: change them to your real policy.** Only types listed there are limited; others (unpaid, maternity/paternity, etc.) are unlimited.
+- Change them without editing code (optional): Firestore → collection `settings` → document `leave` → field `allowance` (type *map*), e.g. `Vacation Leave` = 12. This overrides the file.
+- One person with a different allowance (e.g. a new hire): Firestore → collection `balances` → document ID = that employee's **UID** → fields like `Vacation Leave` = 6 (type *number*).
+- Used days = **approved** requests whose start date is in the current year. Pending days are shown separately. Submitting more than the remaining balance asks the employee to confirm; admins still decide.
+- Admins get a **Balances** tab listing everyone who has submitted a request.
+
+## D. Email notifications (EmailJS)
+Uses the same EmailJS account as your contact form (js/leave-config.js already has the service and key). Create **two new templates** in EmailJS → Email Templates → Create:
+
+**Template 1: new request (to admins)** — *To Email:* `{{to_email}}` · *Subject:* `New leave request from {{employee_name}}`
+```
+{{employee_name}} ({{employee_email}}) submitted a leave request.
+
+Type: {{leave_type}}
+Dates: {{start_date}} to {{end_date}} ({{days}} day(s))
+Reason: {{reason}}
+
+Review it here: {{portal_link}}
+```
+**Template 2: decision (to the employee)** — *To Email:* `{{to_email}}` · *Subject:* `Your leave request was {{status}}`
+```
+Hi {{employee_name}},
+
+Your {{leave_type}} request for {{start_date}} to {{end_date}} ({{days}} day(s)) was {{status}} by {{decided_by}}.
+
+Note: {{admin_note}}
+
+View it here: {{portal_link}}
+```
+Then copy each template's ID into **js/leave-config.js** (`tplNew` and `tplDecision`).
+
+**Who gets the "new request" email?** Firestore → collection `settings` → document ID `leave` → field `adminEmails` (type *array*) → add each admin's email as a string. Only signed-in employees can read this list, so it is not public.
+
+**Limits to know:** emails are sent from the browser through EmailJS (free plan has a monthly cap), so if someone closes the tab the instant they click, an email could be missed. The request itself is always saved. If emails ever fail, nothing breaks. For guaranteed delivery you would move this to a server (Firebase Cloud Functions, which needs a paid Blaze plan).

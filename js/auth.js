@@ -4,7 +4,7 @@
    in the HTML/JS files themselves; load it from a protected backend (e.g. Firestore with security rules). */
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js';
 import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut,setPersistence,browserLocalPersistence,browserSessionPersistence,sendPasswordResetEmail,updateProfile} from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js';
-import {getFirestore,collection,addDoc,query,where,orderBy,onSnapshot,doc,getDoc,updateDoc,deleteDoc,serverTimestamp} from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
+import {getFirestore,collection,addDoc,query,where,orderBy,onSnapshot,doc,getDoc,updateDoc,deleteDoc,writeBatch,serverTimestamp} from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js';
 const cfg=window.FIREBASE_CONFIG||{},ok=!!cfg.apiKey&&!/YOUR_/.test(cfg.apiKey);
 const MSG={'auth/invalid-credential':'Incorrect email or password.','auth/invalid-login-credentials':'Incorrect email or password.','auth/wrong-password':'Incorrect email or password.','auth/user-not-found':'Incorrect email or password.','auth/invalid-email':'Please enter a valid email address.','auth/user-disabled':'This account has been disabled. Please contact the administrator.','auth/too-many-requests':'Too many attempts. Please wait a few minutes and try again.','auth/network-request-failed':'Network error. Please check your connection.'};
 const app=ok?initializeApp(cfg):null,auth=ok?getAuth(app):null,db=ok?getFirestore(app):null;
@@ -23,7 +23,17 @@ const A=window.AUTH={configured:ok,user:null,isAdmin:false,
       await addDoc(collection(db,'leaveRequests'),{uid:u.uid,email:u.email,name:d.name,type:d.type,start:d.start,end:d.end,days:d.days,reason:d.reason,status:'pending',createdAt:serverTimestamp()})},
     mine(cb,er){return onSnapshot(query(collection(db,'leaveRequests'),where('uid','==',A.user.uid)),s=>cb(s.docs.map(x=>({id:x.id,...x.data()}))),er)},
     all(cb,er){return onSnapshot(query(collection(db,'leaveRequests'),orderBy('createdAt','desc')),s=>cb(s.docs.map(x=>({id:x.id,...x.data()}))),er)},
-    decide(id,status,note){return updateDoc(doc(db,'leaveRequests',id),{status,adminNote:note||'',decidedBy:A.user.email,decidedAt:serverTimestamp()})},
+    /* approving also writes a privacy-safe entry (name + dates only, no reason/type) to the team calendar; rejecting removes it */
+    async decide(r,status,note){const b=writeBatch(db),c=doc(db,'calendar',r.id);
+      b.update(doc(db,'leaveRequests',r.id),{status,adminNote:note||'',decidedBy:A.user.email,decidedAt:serverTimestamp()});
+      if(status=='approved')b.set(c,{uid:r.uid,name:r.name||r.email,start:r.start,end:r.end,requestId:r.id});else b.delete(c);
+      await b.commit()},
+    async config(){let s={},o={};
+      try{s=(await getDoc(doc(db,'settings','leave'))).data()||{}}catch(e){}
+      try{o=(await getDoc(doc(db,'balances',A.user.uid))).data()||{}}catch(e){}
+      return{adminEmails:s.adminEmails||[],base:{...((window.LEAVE_CONFIG||{}).allowance||{}),...(s.allowance||{})},own:o}},
+    overrides(cb,er){return onSnapshot(collection(db,'balances'),s=>{const m={};s.docs.forEach(x=>m[x.id]=x.data());cb(m)},er)},
+    calendar(cb,er){return onSnapshot(collection(db,'calendar'),s=>cb(s.docs.map(x=>({id:x.id,...x.data()}))),er)},
     cancel(id){return deleteDoc(doc(db,'leaveRequests',id))}}};
 /* "ready" resolves once Firebase has told us whether someone is signed in */
 A.ready=new Promise(res=>{
